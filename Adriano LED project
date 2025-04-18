@@ -1,0 +1,19 @@
+import serial
+import time
+
+Set up serial connection to Arduino
+ser = serial.Serial('COM3', 9600)
+
+Define LED strip control functions
+def turn_on_led(strip, led):
+    ser.write(f"LED {strip} {led} ON\n".encode())
+
+def turn_off_led(strip, led):
+    ser.write(f"LED {strip} {led} OFF\n".encode())
+
+Control LED strip
+while True:
+    turn_on_led(1, 1)
+    time.sleep(0.5)
+    turn_off_led(1, 1)
+    time.sleep(0.5)
